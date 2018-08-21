@@ -3,6 +3,7 @@ package advanced;
 import com.sandwich.koan.Koan;
 
 import static com.sandwich.util.Assert.fail;
+import static org.mockito.Mockito.mock;
 
 public class AboutMocks {
 
@@ -16,19 +17,13 @@ public class AboutMocks {
         }
     }
 
-    static class MockExplosiveCollaborator implements Collaborator {
-        public void doBusinessStuff() {
-            assert true;
-        }
-    }
-
     static class ClassUnderTest {
         Collaborator c;
 
         public ClassUnderTest() {
             // default is to pass a broken Collaborator, test should pass one
             // that doesn't throw exception
-            this(new MockExplosiveCollaborator());
+            this(mock(Collaborator.class));
         }
 
         public ClassUnderTest(Collaborator c) {
