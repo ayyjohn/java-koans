@@ -16,13 +16,19 @@ public class AboutMocks {
         }
     }
 
+    static class MockExplosiveCollaborator implements Collaborator {
+        public void doBusinessStuff() {
+            assert true;
+        }
+    }
+
     static class ClassUnderTest {
         Collaborator c;
 
         public ClassUnderTest() {
             // default is to pass a broken Collaborator, test should pass one
             // that doesn't throw exception
-            this(new ExplosiveCollaborator());
+            this(new MockExplosiveCollaborator());
         }
 
         public ClassUnderTest(Collaborator c) {
